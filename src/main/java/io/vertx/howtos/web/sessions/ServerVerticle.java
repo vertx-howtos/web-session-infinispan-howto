@@ -16,6 +16,11 @@ import java.util.Date;
 
 public class ServerVerticle extends AbstractVerticle {
 
+  public static final String TEMPLATE = ""
+    + "Session [%s] created on %s%n"
+    + "%n"
+    + "Page generated on %s%n";
+
   @Override
   public void start() {
     Router router = Router.router(vertx);
@@ -38,11 +43,12 @@ public class ServerVerticle extends AbstractVerticle {
     router.get("/").handler(ctx -> {
       Session session = ctx.session();
       session.computeIfAbsent("createdOn", s -> System.currentTimeMillis());
-      String msg = "Session [" + session.id() + "] created on " + new Date(session.<Long>get("createdOn"));
-      msg += "\n";
-      msg += "\n";
-      msg += "Page generated on " + new Date();
-      ctx.end(msg);
+
+      String sessionId = session.id();
+      Date createdOn = new Date(session.<Long>get("createdOn"));
+      Date now = new Date();
+
+      ctx.end(String.format(TEMPLATE, sessionId, createdOn, now));
     });
 
     vertx.createHttpServer()
