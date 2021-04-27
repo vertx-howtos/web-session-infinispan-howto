@@ -104,13 +104,10 @@ You can run the application from:
 
 == Testing the application
 
-Browse to http://localhost:8080.
-
+. Browse to http://localhost:8080.
 If you request this page for the first time, the session creation time should be the same as the page generation time.
-
-Now, let's simulate failover to another web server by stopping the application and starting it again.
-
-After the new web server has started, browse to http://localhost:8080 again.
+. Now, let's simulate failover to another web server by stopping the application and starting it again.
+. After the new web server has started, browse to http://localhost:8080 again.
 The session id and session creation time shouldn't have changed (because session data has been persisted in Infinispan).
 
 == Summary
