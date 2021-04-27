@@ -12,8 +12,6 @@ import io.vertx.ext.web.sstore.infinispan.InfinispanSessionStore;
 
 import java.util.Date;
 
-// docker run -p 11222:11222 -e USER="foo" -e PASS="bar" infinispan/server
-
 public class ServerVerticle extends AbstractVerticle {
 
   public static final String TEMPLATE = ""
@@ -25,7 +23,6 @@ public class ServerVerticle extends AbstractVerticle {
   public void start() {
     Router router = Router.router(vertx);
 
-    // Create a clustered session store using defaults
     JsonObject options = new JsonObject()
       .put("servers", new JsonArray()
         .add(new JsonObject()
@@ -34,21 +31,19 @@ public class ServerVerticle extends AbstractVerticle {
           .put("username", "foo")
           .put("password", "bar"))
       );
-    SessionStore store = InfinispanSessionStore.create(vertx, options);
+    SessionStore store = InfinispanSessionStore.create(vertx, options); // <1>
 
-    SessionHandler sessionHandler = SessionHandler.create(store);
-
-    router.route().handler(sessionHandler);
+    router.route().handler(SessionHandler.create(store)); // <2>
 
     router.get("/").handler(ctx -> {
       Session session = ctx.session();
-      session.computeIfAbsent("createdOn", s -> System.currentTimeMillis());
+      session.computeIfAbsent("createdOn", s -> System.currentTimeMillis()); // <3>
 
       String sessionId = session.id();
       Date createdOn = new Date(session.<Long>get("createdOn"));
       Date now = new Date();
 
-      ctx.end(String.format(TEMPLATE, sessionId, createdOn, now));
+      ctx.end(String.format(TEMPLATE, sessionId, createdOn, now)); // <4>
     });
 
     vertx.createHttpServer()
@@ -56,11 +51,8 @@ public class ServerVerticle extends AbstractVerticle {
       .listen(8080);
   }
 
-  // tag::main[]
   public static void main(String[] args) {
-    Vertx vertx = Vertx.vertx(); // <1>
-    vertx.deployVerticle(new ServerVerticle())
-      .onFailure(Throwable::printStackTrace); // <2>
+    Vertx vertx = Vertx.vertx();
+    vertx.deployVerticle(new ServerVerticle());
   }
-  // end::main[]
 }
