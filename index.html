@@ -370,18 +370,20 @@ If you already have an Infinispan cluster running, don&#8217;t forget to update 
 <div class="sect1">
 <h2 id="testing-the-application">Testing the application</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>Browse to <a href="http://localhost:8080" class="bare">http://localhost:8080</a>.</p>
-</div>
-<div class="paragraph">
-<p>If you request this page for the first time, the session creation time should be the same as the page generation time.</p>
-</div>
-<div class="paragraph">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Browse to <a href="http://localhost:8080" class="bare">http://localhost:8080</a>.
+If you request this page for the first time, the session creation time should be the same as the page generation time.</p>
+</li>
+<li>
 <p>Now, let&#8217;s simulate failover to another web server by stopping the application and starting it again.</p>
-</div>
-<div class="paragraph">
+</li>
+<li>
 <p>After the new web server has started, browse to <a href="http://localhost:8080" class="bare">http://localhost:8080</a> again.
 The session id and session creation time shouldn&#8217;t have changed (because session data has been persisted in Infinispan).</p>
+</li>
+</ol>
 </div>
 </div>
 </div>
@@ -524,7 +526,7 @@ The session id and session creation time shouldn&#8217;t have changed (because s
   <div class="row">
     <div class="col">
       <hr>
-      <p><small>Last published: 2021-04-27 15:52:32 +0000.</small></p>
+      <p><small>Last published: 2021-04-27 16:12:35 +0000.</small></p>
     </div>
   </div>
 </div>
