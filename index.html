@@ -126,24 +126,10 @@
   <span style="color: #000080">&lt;version&gt;</span>1.0-SNAPSHOT<span style="color: #000080">&lt;/version&gt;</span>
 
   <span style="color: #000080">&lt;properties&gt;</span>
-    <span style="color: #000080">&lt;vertx.version&gt;</span>4.1.0-SNAPSHOT<span style="color: #000080">&lt;/vertx.version&gt;</span>
+    <span style="color: #000080">&lt;vertx.version&gt;</span>4.3.5<span style="color: #000080">&lt;/vertx.version&gt;</span>
     <span style="color: #000080">&lt;maven.compiler.source&gt;</span>1.8<span style="color: #000080">&lt;/maven.compiler.source&gt;</span>
     <span style="color: #000080">&lt;maven.compiler.target&gt;</span>1.8<span style="color: #000080">&lt;/maven.compiler.target&gt;</span>
   <span style="color: #000080">&lt;/properties&gt;</span>
-
-  <span style="color: #000080">&lt;repositories&gt;</span>
-    <span style="color: #000080">&lt;repository&gt;</span>
-      <span style="color: #000080">&lt;id&gt;</span>vertx-snapshots-repository<span style="color: #000080">&lt;/id&gt;</span>
-      <span style="color: #000080">&lt;name&gt;</span>Vert.x Snapshots Repository<span style="color: #000080">&lt;/name&gt;</span>
-      <span style="color: #000080">&lt;url&gt;</span>https://s01.oss.sonatype.org/content/repositories/snapshots<span style="color: #000080">&lt;/url&gt;</span>
-      <span style="color: #000080">&lt;releases&gt;</span>
-        <span style="color: #000080">&lt;enabled&gt;</span>false<span style="color: #000080">&lt;/enabled&gt;</span>
-      <span style="color: #000080">&lt;/releases&gt;</span>
-      <span style="color: #000080">&lt;snapshots&gt;</span>
-        <span style="color: #000080">&lt;enabled&gt;</span>true<span style="color: #000080">&lt;/enabled&gt;</span>
-      <span style="color: #000080">&lt;/snapshots&gt;</span>
-    <span style="color: #000080">&lt;/repository&gt;</span>
-  <span style="color: #000080">&lt;/repositories&gt;</span>
 
   <span style="color: #000080">&lt;dependencyManagement&gt;</span>
     <span style="color: #000080">&lt;dependencies&gt;</span>
@@ -195,14 +181,11 @@
 <span style="background-color: #f8f8f8">}</span>
 
 <span style="color: #990000;font-weight: bold">repositories</span> <span style="background-color: #f8f8f8">{</span>
-  <span style="color: #990000;font-weight: bold">maven</span> <span style="background-color: #f8f8f8">{</span>
-    <span style="background-color: #f8f8f8">url</span> <span style="background-color: #f8f8f8">=</span> <span style="color: #990000;font-weight: bold">uri</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">"https://s01.oss.sonatype.org/content/repositories/snapshots"</span><span style="background-color: #f8f8f8">)</span>
-  <span style="background-color: #f8f8f8">}</span>
   <span style="color: #990000;font-weight: bold">mavenCentral</span><span style="background-color: #f8f8f8">()</span>
 <span style="background-color: #f8f8f8">}</span>
 
 <span style="color: #990000;font-weight: bold">dependencies</span> <span style="background-color: #f8f8f8">{</span>
-  <span style="color: #000000;font-weight: bold">val</span> <span style="background-color: #f8f8f8">vertxVersion</span> <span style="background-color: #f8f8f8">=</span> <span style="color: #d14">"4.1.0-SNAPSHOT"</span>
+  <span style="color: #000000;font-weight: bold">val</span> <span style="background-color: #f8f8f8">vertxVersion</span> <span style="background-color: #f8f8f8">=</span> <span style="color: #d14">"4.3.5"</span>
   <span style="color: #990000;font-weight: bold">implementation</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">"io.vertx:vertx-web-sstore-infinispan:${vertxVersion}"</span><span style="background-color: #f8f8f8">)</span>
 <span style="background-color: #f8f8f8">}</span>
 
@@ -262,7 +245,7 @@
         <span style="color: #000000;font-weight: bold">.</span><span style="color: #008080">add</span><span style="color: #000000;font-weight: bold">(</span><span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">JsonObject</span><span style="color: #000000;font-weight: bold">()</span>
           <span style="color: #000000;font-weight: bold">.</span><span style="color: #008080">put</span><span style="color: #000000;font-weight: bold">(</span><span style="color: #d14">"host"</span><span style="color: #000000;font-weight: bold">,</span> <span style="color: #d14">"localhost"</span><span style="color: #000000;font-weight: bold">)</span>
           <span style="color: #000000;font-weight: bold">.</span><span style="color: #008080">put</span><span style="color: #000000;font-weight: bold">(</span><span style="color: #d14">"port"</span><span style="color: #000000;font-weight: bold">,</span> <span style="color: #009999">11222</span><span style="color: #000000;font-weight: bold">)</span>
-          <span style="color: #000000;font-weight: bold">.</span><span style="color: #008080">put</span><span style="color: #000000;font-weight: bold">(</span><span style="color: #d14">"username"</span><span style="color: #000000;font-weight: bold">,</span> <span style="color: #d14">"foo"</span><span style="color: #000000;font-weight: bold">)</span>
+          <span style="color: #000000;font-weight: bold">.</span><span style="color: #008080">put</span><span style="color: #000000;font-weight: bold">(</span><span style="color: #d14">"username"</span><span style="color: #000000;font-weight: bold">,</span> <span style="color: #d14">"admin"</span><span style="color: #000000;font-weight: bold">)</span>
           <span style="color: #000000;font-weight: bold">.</span><span style="color: #008080">put</span><span style="color: #000000;font-weight: bold">(</span><span style="color: #d14">"password"</span><span style="color: #000000;font-weight: bold">,</span> <span style="color: #d14">"bar"</span><span style="color: #000000;font-weight: bold">))</span>
       <span style="color: #000000;font-weight: bold">);</span>
     <span style="color: #445588;font-weight: bold">SessionStore</span> <span style="background-color: #f8f8f8">store</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #445588;font-weight: bold">InfinispanSessionStore</span><span style="color: #000000;font-weight: bold">.</span><span style="color: #008080">create</span><span style="color: #000000;font-weight: bold">(</span><span style="background-color: #f8f8f8">vertx</span><span style="color: #000000;font-weight: bold">,</span> <span style="background-color: #f8f8f8">options</span><span style="color: #000000;font-weight: bold">);</span> // <b class="conum">(1)</b>
@@ -321,7 +304,7 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight" style="background-color: #f8f8f8"><code data-lang="bash">docker run <span style="color: #000080">-p</span> 11222:11222 <span style="color: #000080">-e</span> <span style="color: #008080">USER</span><span style="color: #000000;font-weight: bold">=</span><span style="color: #d14">"foo"</span> <span style="color: #000080">-e</span> <span style="color: #008080">PASS</span><span style="color: #000000;font-weight: bold">=</span><span style="color: #d14">"bar"</span> infinispan/server</code></pre>
+<pre class="rouge highlight" style="background-color: #f8f8f8"><code data-lang="bash">docker run <span style="color: #000080">-p</span> 11222:11222 <span style="color: #000080">-e</span> <span style="color: #008080">USER</span><span style="color: #000000;font-weight: bold">=</span><span style="color: #d14">"admin"</span> <span style="color: #000080">-e</span> <span style="color: #008080">PASS</span><span style="color: #000000;font-weight: bold">=</span><span style="color: #d14">"bar"</span> infinispan/server:13.0</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -526,7 +509,7 @@ The session id and session creation time shouldn&#8217;t have changed (because s
   <div class="row">
     <div class="col">
       <hr>
-      <p><small>Last published: 2021-06-27 00:51:35 +0000.</small></p>
+      <p><small>Last published: 2022-11-18 14:42:00 +0000.</small></p>
     </div>
   </div>
 </div>
