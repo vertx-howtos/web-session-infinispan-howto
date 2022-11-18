@@ -28,7 +28,7 @@ public class ServerVerticle extends AbstractVerticle {
         .add(new JsonObject()
           .put("host", "localhost")
           .put("port", 11222)
-          .put("username", "foo")
+          .put("username", "admin")
           .put("password", "bar"))
       );
     SessionStore store = InfinispanSessionStore.create(vertx, options); // <1>

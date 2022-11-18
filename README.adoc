@@ -86,7 +86,7 @@ To run an Infinispan server on your machine with Docker, open your terminal and 
 
 [source,bash]
 ----
-docker run -p 11222:11222 -e USER="foo" -e PASS="bar" infinispan/server
+docker run -p 11222:11222 -e USER="admin" -e PASS="bar" infinispan/server:13.0
 ----
 
 NOTE: If you already have an Infinispan cluster running, don't forget to update the configuration (host, port and credentials) in `ServerVerticle`.
