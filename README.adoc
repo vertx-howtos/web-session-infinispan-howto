@@ -2,6 +2,10 @@
 :page-permalink: /
 :page-github: vertx-howtos/web-session-infinispan-howto
 
+ifdef::env-github[]
+image:https://github.com/vertx-howtos/web-session-infinispan-howto/workflows/Publish%20the%20how-to/badge.svg["Build Status", link="https://github.com/vertx-howtos/web-session-infinispan-howto/actions?query=workflow%3A%22Publish+the+how-to%22"]
+endif::env-github[]
+
 This document will show you how to store Vert.x Web Sessions in https://infinispan.org/[Infinispan].
 
 == What you will build
