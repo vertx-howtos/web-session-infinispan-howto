@@ -4,14 +4,11 @@ plugins {
 }
 
 repositories {
-  maven {
-    url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots")
-  }
   mavenCentral()
 }
 
 dependencies {
-  val vertxVersion = "4.1.0-SNAPSHOT"
+  val vertxVersion = "4.3.5"
   implementation("io.vertx:vertx-web-sstore-infinispan:${vertxVersion}")
 }
 
