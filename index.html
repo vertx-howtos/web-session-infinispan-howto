@@ -85,10 +85,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>A text editor or IDE</p>
+<p>A text editor or an IDE</p>
 </li>
 <li>
-<p>Java 8 higher</p>
+<p>Java 11 or higher</p>
 </li>
 <li>
 <p>Maven or Gradle</p>
@@ -126,9 +126,9 @@
   <span style="color: #000080">&lt;version&gt;</span>1.0-SNAPSHOT<span style="color: #000080">&lt;/version&gt;</span>
 
   <span style="color: #000080">&lt;properties&gt;</span>
-    <span style="color: #000080">&lt;vertx.version&gt;</span>4.3.5<span style="color: #000080">&lt;/vertx.version&gt;</span>
-    <span style="color: #000080">&lt;maven.compiler.source&gt;</span>1.8<span style="color: #000080">&lt;/maven.compiler.source&gt;</span>
-    <span style="color: #000080">&lt;maven.compiler.target&gt;</span>1.8<span style="color: #000080">&lt;/maven.compiler.target&gt;</span>
+    <span style="color: #000080">&lt;vertx.version&gt;</span>4.4.0<span style="color: #000080">&lt;/vertx.version&gt;</span>
+    <span style="color: #000080">&lt;maven.compiler.source&gt;</span>11<span style="color: #000080">&lt;/maven.compiler.source&gt;</span>
+    <span style="color: #000080">&lt;maven.compiler.target&gt;</span>11<span style="color: #000080">&lt;/maven.compiler.target&gt;</span>
   <span style="color: #000080">&lt;/properties&gt;</span>
 
   <span style="color: #000080">&lt;dependencyManagement&gt;</span>
@@ -152,6 +152,14 @@
 
   <span style="color: #000080">&lt;build&gt;</span>
     <span style="color: #000080">&lt;plugins&gt;</span>
+      <span style="color: #000080">&lt;plugin&gt;</span>
+        <span style="color: #000080">&lt;groupId&gt;</span>org.apache.maven.plugins<span style="color: #000080">&lt;/groupId&gt;</span>
+        <span style="color: #000080">&lt;artifactId&gt;</span>maven-compiler-plugin<span style="color: #000080">&lt;/artifactId&gt;</span>
+        <span style="color: #000080">&lt;version&gt;</span>3.10.1<span style="color: #000080">&lt;/version&gt;</span>
+        <span style="color: #000080">&lt;configuration&gt;</span>
+          <span style="color: #000080">&lt;release&gt;</span>11<span style="color: #000080">&lt;/release&gt;</span>
+        <span style="color: #000080">&lt;/configuration&gt;</span>
+      <span style="color: #000080">&lt;/plugin&gt;</span>
       <span style="color: #000080">&lt;plugin&gt;</span>
         <span style="color: #000080">&lt;groupId&gt;</span>org.codehaus.mojo<span style="color: #000080">&lt;/groupId&gt;</span>
         <span style="color: #000080">&lt;artifactId&gt;</span>exec-maven-plugin<span style="color: #000080">&lt;/artifactId&gt;</span>
@@ -184,9 +192,15 @@
   <span style="color: #990000;font-weight: bold">mavenCentral</span><span style="background-color: #f8f8f8">()</span>
 <span style="background-color: #f8f8f8">}</span>
 
+<span style="color: #990000;font-weight: bold">java</span> <span style="background-color: #f8f8f8">{</span>
+  <span style="color: #990000;font-weight: bold">toolchain</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="background-color: #f8f8f8">languageVersion</span><span style="background-color: #f8f8f8">.</span><span style="color: #000000;font-weight: bold">set</span><span style="background-color: #f8f8f8">(</span><span style="color: #445588;font-weight: bold">JavaLanguageVersion</span><span style="background-color: #f8f8f8">.</span><span style="color: #990000;font-weight: bold">of</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">11</span><span style="background-color: #f8f8f8">))</span>
+  <span style="background-color: #f8f8f8">}</span>
+<span style="background-color: #f8f8f8">}</span>
+
 <span style="color: #990000;font-weight: bold">dependencies</span> <span style="background-color: #f8f8f8">{</span>
-  <span style="color: #000000;font-weight: bold">val</span> <span style="background-color: #f8f8f8">vertxVersion</span> <span style="background-color: #f8f8f8">=</span> <span style="color: #d14">"4.3.5"</span>
-  <span style="color: #990000;font-weight: bold">implementation</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">"io.vertx:vertx-web-sstore-infinispan:${vertxVersion}"</span><span style="background-color: #f8f8f8">)</span>
+  <span style="color: #990000;font-weight: bold">implementation</span><span style="background-color: #f8f8f8">(</span><span style="color: #990000;font-weight: bold">platform</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">"io.vertx:vertx-stack-depchain:4.4.0"</span><span style="background-color: #f8f8f8">))</span>
+  <span style="color: #990000;font-weight: bold">implementation</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">"io.vertx:vertx-web-sstore-infinispan"</span><span style="background-color: #f8f8f8">)</span>
 <span style="background-color: #f8f8f8">}</span>
 
 <span style="color: #990000;font-weight: bold">application</span> <span style="background-color: #f8f8f8">{</span>
@@ -194,7 +208,7 @@
 <span style="background-color: #f8f8f8">}</span>
 
 <span style="background-color: #f8f8f8">tasks</span><span style="background-color: #f8f8f8">.</span><span style="color: #990000;font-weight: bold">wrapper</span> <span style="background-color: #f8f8f8">{</span>
-  <span style="background-color: #f8f8f8">gradleVersion</span> <span style="background-color: #f8f8f8">=</span> <span style="color: #d14">"5.2"</span>
+  <span style="background-color: #f8f8f8">gradleVersion</span> <span style="background-color: #f8f8f8">=</span> <span style="color: #d14">"7.6"</span>
 <span style="background-color: #f8f8f8">}</span></code></pre>
 </div>
 </div>
@@ -509,7 +523,7 @@ The session id and session creation time shouldn&#8217;t have changed (because s
   <div class="row">
     <div class="col">
       <hr>
-      <p><small>Last published: 2022-12-07 01:38:15 +0000.</small></p>
+      <p><small>Last published: 2023-03-29 19:49:32 +0000.</small></p>
     </div>
   </div>
 </div>
