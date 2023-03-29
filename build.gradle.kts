@@ -7,9 +7,15 @@ repositories {
   mavenCentral()
 }
 
+java {
+  toolchain {
+    languageVersion.set(JavaLanguageVersion.of(11))
+  }
+}
+
 dependencies {
-  val vertxVersion = "4.3.5"
-  implementation("io.vertx:vertx-web-sstore-infinispan:${vertxVersion}")
+  implementation(platform("io.vertx:vertx-stack-depchain:4.4.0"))
+  implementation("io.vertx:vertx-web-sstore-infinispan")
 }
 
 application {
@@ -17,5 +23,5 @@ application {
 }
 
 tasks.wrapper {
-  gradleVersion = "5.2"
+  gradleVersion = "7.6"
 }
