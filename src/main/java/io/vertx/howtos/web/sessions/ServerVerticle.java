@@ -1,6 +1,7 @@
 package io.vertx.howtos.web.sessions;
 
-import io.vertx.core.AbstractVerticle;
+import io.vertx.core.Future;
+import io.vertx.core.VerticleBase;
 import io.vertx.core.Vertx;
 import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
@@ -12,7 +13,7 @@ import io.vertx.ext.web.sstore.infinispan.InfinispanSessionStore;
 
 import java.util.Date;
 
-public class ServerVerticle extends AbstractVerticle {
+public class ServerVerticle extends VerticleBase {
 
   public static final String TEMPLATE = ""
     + "Session [%s] created on %s%n"
@@ -20,7 +21,7 @@ public class ServerVerticle extends AbstractVerticle {
     + "Page generated on %s%n";
 
   @Override
-  public void start() {
+  public Future<?> start() {
     Router router = Router.router(vertx);
 
     JsonObject options = new JsonObject()
@@ -46,13 +47,13 @@ public class ServerVerticle extends AbstractVerticle {
       ctx.end(String.format(TEMPLATE, sessionId, createdOn, now)); // <4>
     });
 
-    vertx.createHttpServer()
+    return vertx.createHttpServer()
       .requestHandler(router)
       .listen(8080);
   }
 
   public static void main(String[] args) {
     Vertx vertx = Vertx.vertx();
-    vertx.deployVerticle(new ServerVerticle());
+    vertx.deployVerticle(new ServerVerticle()).await();
   }
 }
