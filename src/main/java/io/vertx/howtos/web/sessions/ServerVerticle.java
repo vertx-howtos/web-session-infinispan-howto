@@ -15,10 +15,7 @@ import java.util.Date;
 
 public class ServerVerticle extends VerticleBase {
 
-  public static final String TEMPLATE = ""
-    + "Session [%s] created on %s%n"
-    + "%n"
-    + "Page generated on %s%n";
+  public static final String TEMPLATE = String.format("Session [%%s] created on %%s%%n%%nPage generated on %%s%%n");
 
   @Override
   public Future<?> start() {
