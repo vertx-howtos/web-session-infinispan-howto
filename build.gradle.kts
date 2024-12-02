@@ -19,9 +19,5 @@ dependencies {
 }
 
 application {
-  mainClassName = "io.vertx.howtos.web.sessions.ServerVerticle"
-}
-
-tasks.wrapper {
-  gradleVersion = "7.6"
+  mainClass = "io.vertx.howtos.web.sessions.ServerVerticle"
 }
